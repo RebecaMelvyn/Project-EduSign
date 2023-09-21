@@ -27,7 +27,7 @@ const LoginView = () => {
               nom: user.email,
               uid: user.uid,
               present: false, 
-              roles: 'prof',
+              roles: 'eleve',
             };
             
             setDoc(userDocRef, userData)
