@@ -3,6 +3,7 @@ import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 import { auth } from "../firebase"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
+import { doc, setDoc, getFirestore } from "firebase/firestore"; 
 
 
 const LoginView = () => {
@@ -12,19 +13,35 @@ const LoginView = () => {
     const navigation = useNavigation();
 
 
+   
     const handleSignUp = () => {
-        
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+          .then((userCredential) => {
             const user = userCredential.user;
-            navigation.navigate('Home');
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-        });
-    }
+            
+            const db = getFirestore();
+            const userDocRef = doc(db, 'users', user.uid);
+            
+            const userData = {
+              nom: 'test',
+              present: false, 
+              roles: 'eleve',
+            };
+            
+            setDoc(userDocRef, userData)
+              .then(() => {
+                navigation.navigate('Home');
+              })
+              .catch((error) => {
+                console.error('Erreur lors de l\'ajout du document :', error);
+              });
+          })
+          .catch((error) => {
+            console.error('Erreur lors de la création de l\'utilisateur :', error);
+          });
+      };
+
 
     const handleSignIn = () => {
         
