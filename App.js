@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginView from './views/LoginView';
 import HomeView from './views/HomeView';
 import { getAuth } from 'firebase/auth';
+import { TouchableOpacity } from 'react-native-web';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,26 +28,41 @@ export default function App() {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.footerContent}
         >
-          <View style={styles.footerItem}>
-            <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
-            <Text>Accueil</Text>
-          </View>
-          <View style={styles.footerItem}>
-            <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
-            <Text>Statistiques</Text>
-          </View>
-          <View style={styles.footerItem}>
-            <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
-            <Text>Documents</Text>
-          </View>
+          <TouchableOpacity>
+            <View style={styles.footerItem}>
+              <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
+              <Text>Accueil</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <View style={styles.footerItem}>
+              <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
+              <Text>Statistiques</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <View style={styles.footerItem}>
+              <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
+              <Text>Documents</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
           <View style={styles.footerItem}>
             <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
             <Text>Calendrier</Text>
           </View>
-          <View style={styles.footerItem}>
-            <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
-            <Text>Profil</Text>
-          </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <View style={styles.footerItem}>
+              <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
+              <Text>Profil</Text>
+            </View>
+          </TouchableOpacity>
+
         </ScrollView>
       </View>
 
@@ -66,7 +82,9 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 50,
-    backgroundColor: 'red',
+    backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderTopColor: "solid black",
   },
   footerContent: {
     flexDirection: 'row',
