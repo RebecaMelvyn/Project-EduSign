@@ -2,32 +2,27 @@ import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { auth } from "../firebase"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from '@react-navigation/native';
+
 
 const LoginView = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const navigation = useNavigation();
+
 
     const handleSignUp = () => {
-        // auth
-        // .createUserWithEmailAndPassword(email, password)
-        // .then(userCredentials => {
-        //     const user = userCredentials.user;
-        //     console.log(user.email);
-        // })
-        // .catch(error => alert(error.message))
         
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in 
             const user = userCredential.user;
-            // ...
+            navigation.navigate('Home');
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
         });
     }
 
@@ -36,16 +31,13 @@ const LoginView = () => {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in 
             const user = userCredential.user;
             console.log("User signed in:", user.email);
-            navigation.navigate("./HomeView.js");
-            // ...
+            navigation.navigate('Home');
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
         });
     }
 
