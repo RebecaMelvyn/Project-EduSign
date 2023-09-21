@@ -21,12 +21,13 @@ const LoginView = () => {
             const user = userCredential.user;
             
             const db = getFirestore();
-            const userDocRef = doc(db, 'users', user.uid);
+            const userDocRef = doc(db, 'users', user.email);
             
             const userData = {
-              nom: 'test',
+              nom: user.email,
+              uid: user.uid,
               present: false, 
-              roles: 'eleve',
+              roles: 'prof',
             };
             
             setDoc(userDocRef, userData)
