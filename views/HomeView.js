@@ -4,6 +4,7 @@ import QRCode from 'react-native-qrcode-svg';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
+
 const HomeView = ({ route }) => {
   const [role, setRole] = useState('');
 
@@ -12,7 +13,7 @@ const HomeView = ({ route }) => {
     const user = auth.currentUser;
 
     if (user) {
-      const userUid = user.email;
+      const userUid = user.uid;
 
       async function fetchUserRole() {
         try {

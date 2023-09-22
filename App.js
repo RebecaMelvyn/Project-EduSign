@@ -1,18 +1,17 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginView from './views/LoginView';
 import HomeView from './views/HomeView';
 import { getAuth } from 'firebase/auth';
-import { TouchableOpacity } from 'react-native-web';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const auth = getAuth();
-  
+
   return (
     <View style={styles.container}>
       <NavigationContainer>
@@ -28,40 +27,40 @@ export default function App() {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.footerContent}
         >
-          <TouchableOpacity>
+          <Pressable>
             <View style={styles.footerItem}>
               <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
               <Text>Accueil</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
 
-          <TouchableOpacity>
+          <Pressable>
             <View style={styles.footerItem}>
               <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
               <Text>Statistiques</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
 
-          <TouchableOpacity>
+          <Pressable>
             <View style={styles.footerItem}>
               <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
               <Text>Documents</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
 
-          <TouchableOpacity>
-          <View style={styles.footerItem}>
-            <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
-            <Text>Calendrier</Text>
-          </View>
-          </TouchableOpacity>
+          <Pressable>
+            <View style={styles.footerItem}>
+              <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
+              <Text>Calendrier</Text>
+            </View>
+          </Pressable>
 
-          <TouchableOpacity>
+          <Pressable>
             <View style={styles.footerItem}>
               <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
               <Text>Profil</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
 
         </ScrollView>
       </View>
